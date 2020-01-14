@@ -270,7 +270,7 @@ void Integer29(int a, int b, int c) {
 	int squares = x * y;
 	int xl = a % c;
 	int yl = b % c;
-	int freeSpace = xl * yl;
+	int freeSpace = (a * b) - (squares * c*c);
 	cout << "There are " << squares << " squares in the rectangle." << endl;
 	cout << "There are " << freeSpace << " of free space left." << endl;
 }
