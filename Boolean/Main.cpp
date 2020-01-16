@@ -1,7 +1,9 @@
 #include <iostream>
 #include "Boolean.h"
 
+using namespace std;
+
 void main() {
-	Boolean39(3, 3, 5, 6);
+	cout << Boolean39(3, 3, 4, 5) << endl;
 	system("pause");
 }
