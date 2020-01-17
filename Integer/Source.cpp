@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <cmath>
-#include "Integer.h"
 
 using namespace std;
 

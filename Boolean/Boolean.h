@@ -1,3 +1,6 @@
+#ifndef BOOLEAN_H
+#define BOOLEAN_H
+
 bool Boolean1(int a);
 
 bool Boolean2(int a);
@@ -77,3 +80,5 @@ bool Boolean38(int x1, int y1, int x2, int y2);
 bool Boolean39(int x1, int y1, int x2, int y2);
 
 bool Boolean40(int x1, int y1, int x2, int y2);
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef INTEGER_H
+#define INTEGER_H
 
 void Integer1(int l);
 
@@ -62,3 +64,5 @@ void Integer29(int a, int b, int c);
 void Integer30(int year);
 
 std::string DayDisplay(int day);
+
+#endif
