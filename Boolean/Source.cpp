@@ -9,7 +9,7 @@ bool Boolean1(int a) {
 
 bool Boolean2(int a) {
 	/*Дано целое число A. Проверить истинность высказывания: «Число A является нечетным».*/
-	return (a % 2) != 0;
+	return a % 2;
 }
 
 bool Boolean3(int a) {
@@ -38,13 +38,13 @@ bool Boolean6(int a, int b, int c) {
 bool Boolean7(int a, int b, int c) {
 	/*Даны три целых числа: A, B, C. Проверить истинность высказывания: 
 	«Число B находится между числами A и C»*/
-	return ((b < a) && (b > c)) || ((b > a) && (b < c));
+	return ((a - b) * (b - c)) > 0;
 }
 
 bool Boolean8(int a, int b) {
 	/* Даны два целых числа: A, B. Проверить истинность высказывания:
 	«Каждое из чисел A и B нечетное».*/
-	return ((a % 2) != 0) && ((b % 2) != 0);
+	return (a * b) % 2;
 }
 
 bool Boolean9(int a, int b) {
@@ -56,7 +56,7 @@ bool Boolean9(int a, int b) {
 bool Boolean10(int a, int b) {
 	/* Даны два целых числа: A, B. Проверить истинность высказывания: 
 	«Ровно одно из чисел A и B нечетное».*/
-	return ((a % 2) != 0) ^ ((b % 2) != 0);
+	return (a + b) % 2;
 }
 
 bool Boolean11(int a, int b) {
@@ -86,7 +86,9 @@ bool Boolean14(int a, int b, int c) {
 bool Boolean15(int a, int b, int c) {
 	/*Даны три целых числа: A, B, C. Проверить истинность высказывания: 
 	«Ровно два из чисел A, B, C являются положительными».*/
-	return ((a > 0) ^ (b > 0)) ^ (c > 0);
+	return ((a > 0) && (b > 0)) ^ (c >= 0) ||
+		((c > 0) && (b > 0)) ^ (a >= 0) || 
+		((a > 0) && (c > 0)) ^ (b >= 0);
 }
 
 bool Boolean16(int a) {
@@ -155,7 +157,7 @@ bool Boolean24(int a, int b, int c) {
 	2 − 4·A·C, проверить истинность высказывания: «Квадратное
 	уравнение A·x^2 + B·x + C = 0 имеет вещественные корни».*/
 	int d = b*b - 4 * a * c;
-	return d < 0;
+	return d >= 0;
 }
 
 bool Boolean25(int x, int y) {
@@ -214,7 +216,7 @@ bool Boolean32(int a, int b, int c) {
 bool Boolean33(int a, int b, int c) {
 	/*Даны целые числа a, b, c. Проверить истинность высказывания:
 	«Существует треугольник со сторонами a, b, c».*/
-	return (a < (b + c)) || (b < (a + c)) || (c < (a + b));
+	return (a < (b + c)) && (b < (a + c)) && (c < (a + b));
 }
 
 bool Boolean34(int x, int y) {

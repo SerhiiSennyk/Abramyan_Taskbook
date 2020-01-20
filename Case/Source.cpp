@@ -229,14 +229,10 @@ void case11(char c, int n1, int n2) {
 
 char RadarSwitch(char c, int n) {
 	switch (c) {
-	case 'N':
-		return NorthSwitch(n);
-	case 'W':
-		return WestSwitch(n);
-	case 'S':
-		return SouthSwitch(n);
-	case 'E':
-		return EastSwitch(n);
+	case 'N': return NorthSwitch(n);
+	case 'W': return WestSwitch(n);
+	case 'S': return SouthSwitch(n);
+	case 'E': return EastSwitch(n);
 	}
 }
 
@@ -318,21 +314,25 @@ void case13(int number, int value) {
 		hypotenuse = cathetus * sqrt(2);
 		height = hypotenuse / 2;
 		square = hypotenuse * (height / 2);
+		break;
 	case 2:
 		cathetus = value / sqrt(2);
 		hypotenuse = value;
 		height = hypotenuse / 2;
 		square = hypotenuse * (height / 2);
+		break;
 	case 3:
 		cathetus = (value / sqrt(2)) * 2;
 		hypotenuse = cathetus * sqrt(2);
 		height = value;
 		square = hypotenuse * (height / 2);
+		break;
 	case 4:
 		hypotenuse = sqrt(value * 4);
 		cathetus = hypotenuse / sqrt(2);
 		height = hypotenuse / 2;
 		square = value;
+		break;
 	}
 	cout << "cathetus = " << cathetus << endl;
 	cout << "hypotenuse = " << hypotenuse << endl;
@@ -340,82 +340,365 @@ void case13(int number, int value) {
 	cout << "square = " << square << endl;
 }
 
-void case14(int) {
+void case14(int number, int value) {
 	/*Элементы равностороннего треугольника пронумерованы следующим образом: 
 	1 — сторона a, 2 — радиус R1 вписанной окружности (R1 = a· √ 3/6), 
 	3 — радиус R2 описанной окружности (R2 = 2·R1), 4 — площадь S = a^2·√3/4. 
 	Дан номер одного из этих элементов и его значение.
 	Вывести значения остальных элементов данного треугольника (в том же порядке).*/
-	switch () {
+	float a, r1, r2, s;
+	switch (number) {
 	case 1:
+		a = value;
+		r1 = a * sqrt(0.5);
+		r2 = 2 * r1;
+		s = a*a * sqrt(0.75);
+		break;
 	case 2:
+		a = value / sqrt(0.5);
+		r1 = value;
+		r2 = 2 * r1;
+		s = a*a * sqrt(0.75);
+		break;
 	case 3:
+		r1 = value / 2;
+		a = r1 / sqrt(0.5);
+		r2 = value;
+		s = a*a * sqrt(0.75);
+		break;
 	case 4:
+		a = sqrt(value / sqrt(0.75));
+		r1 = a * sqrt(0.5);
+		r2 = 2 * r1;
+		s = value;
+		break;
+	}
+	cout << "a = " << a << endl;
+	cout << "r1 = " << r1 << endl;
+	cout << "r2 = " << r2 << endl;
+	cout << "square = " << s << endl;
+}
+
+void case15(int n, int m) {
+	/*Мастям игральных карт присвоены порядковые номера: 1 — пики,
+	2 — трефы, 3 — бубны, 4 — червы. Достоинству карт, старших десятки,
+	присвоены номера: 11 — валет, 12 — дама, 13 — король, 14 — туз. Даны
+	два целых числа: N — достоинство (6 ≤ N ≤ 14) и M — масть карты
+	(1 ≤ M ≤ 4). Вывести название соответствующей карты вида «шестерка
+	бубен», «дама червей», «туз треф» и т. п.*/
+	switch (n) {
+	case 6:
+		cout << "шестёрка ";
+		suits(m);
+		break;
+	case 7:
+		cout << "семёрка ";
+		suits(m);
+		break;
+	case 8:
+		cout << "восьмёрка ";
+		suits(m);
+		break;
+	case 9:
+		cout << "девятка ";
+		suits(m);
+		break;
+	case 10:
+		cout << "десятка ";
+		suits(m);
+		break;
+	case 11:
+		cout << "валет  ";
+		suits(m);
+		break;
+	case 12:
+		cout << "дама ";
+		suits(m);
+		break;
+	case 13:
+		cout << "король ";
+		suits(m);
+		break;
+	case 14:
+		cout << "туз ";
+		suits(m);
+		break;
+	default: cout << "none";
 	}
 }
 
-void case15(int) {
-	/**/
-	switch () {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
+void suits(int m) {
+	switch (m) {
+	case 1: cout << "пик" << endl; break;
+	case 2: cout << "треф" << endl; break;
+	case 3: cout << "бубен" << endl; break;
+	case 4: cout << "червей" << endl; break;
 	}
 }
 
-void case16(int) {
-	/**/
-	switch () {
-	case 1:
+void case16(int number) {
+	/*Дано целое число в диапазоне 20–69, определяющее возраст (в годах).
+	Вывести строку-описание указанного возраста, обеспечив правильное согласование числа 
+	со словом «год», например: 20 — «двадцать лет», 32 — «тридцать два года», 41 — «сорок один год».*/
+	int dozens = number / 10;
+	int units = number % 10;
+	switch (dozens) {
 	case 2:
+		cout << "двадцать ";
+		years(units);
+		cout << endl;
+		break;
 	case 3:
+		cout << "тридцать ";
+		years(units);
+		cout << endl;
+		break;
 	case 4:
+		cout << "сорок ";
+		years(units);
+		cout << endl;
+		break;
 	case 5:
+		cout << "пятдесят ";
+		years(units);
+		cout << endl;
+		break;
+	case 6:
+		cout << "шестдесят ";
+		years(units);
+		cout << endl;
+		break;
 	}
 }
 
-void case17(int) {
-	/**/
-	switch () {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
+void years(int units) {
+	switch (units) {
+	case 0: cout << "лет"; break;
+	case 1: cout << "один год"; break;
+	case 2: cout << "два года"; break;
+	case 3: cout << "три года"; break;
+	case 4: cout << "четыре года"; break;
+	case 5: cout << "пять лет"; break;
+	case 6: cout << "шесть лет"; break;
+	case 7: cout << "семь лет"; break;
+	case 8: cout << "восемь лет"; break;
+	case 9: cout << "девять лет"; break;
 	}
 }
 
-void case18(int) {
-	/**/
-	switch () {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
+void case17(int number) {
+	/* Дано целое число в диапазоне 10–40, определяющее количество учебных заданий 
+	по некоторой теме. Вывести строку-описание указанного количества заданий, 
+	обеспечив правильное согласование числа со словами «учебное задание», 
+	например: 18 — «восемнадцать учебных заданий»*/
+	int dozens = number / 10;
+	int units = number % 10;
+	if (dozens < 20) tenth(units);
+	else {
+		switch (dozens) {
+		case 2:
+			cout << "двадцать ";
+			unitsTasks(units);
+			break;
+		case 3:
+			cout << "тридцать ";
+			unitsTasks(units);
+			break;
+		case 4:
+			cout << "сорок ";
+			unitsTasks(units);
+			break;
+		}
 	}
 }
 
-void case19(int) {
-	/**/
-	switch () {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
+void tenth(int units) {
+	switch (units) {
+	case 0: cout << "десять" << endl; break;
+	case 1: cout << "одинадцать" << endl; break;
+	case 2: cout << "двенадцать" << endl; break;
+	case 3: cout << "тринадцать" << endl; break;
+	case 4: cout << "четырнадцать" << endl; break;
+	case 5: cout << "пятнадцать" << endl; break;
+	case 6: cout << "шестнадцать" << endl; break;
+	case 7: cout << "семнадцать" << endl; break;
+	case 8: cout << "восемнадцать" << endl; break;
+	case 9: cout << "девятнадцать" << endl; break;
 	}
 }
 
-void case20(int) {
-	/**/
-	switch () {
-	case 1:
+void unitsTasks(int units) {
+	switch (units) {
+	case 0: break;
+	case 1: cout << "одно"; break;
+	case 2: cout << "два"; break;
+	case 3: cout << "три"; break;
+	case 4: cout << "четыре"; break;
+	case 5: cout << "пять"; break;
+	case 6: cout << "шесть"; break;
+	case 7: cout << "семь"; break;
+	case 8: cout << "восемь"; break;
+	case 9: cout << "девять"; break;
+	}
+	if (units == 1) cout << " учебное задание" << endl;
+	else if ((units > 1) || (units < 5)) cout << " учебных задания" << endl;
+	else cout << " учебных заданий" << endl;
+}
+
+void case18(int number) {
+	/*Дано целое число в диапазоне 100–999. Вывести строку-описание данного числа,
+	например: 256 — «двести пятьдесят шесть», 814 — «восемьсот четырнадцать».*/
+	hundredsOut(number / 100);
+	int dozens = (number % 100) / 10;
+	int units = number % 10;
+	if ((dozens > 1) && units) {
+		dozensOut(dozens);
+		unitsOut(units);
+	}
+	else tensOut(units);
+}
+
+void hundredsOut(int hundreds) {
+	switch (hundreds) {
+	case 0: break;
+	case 1: cout << "сто "; break;
+	case 2: cout << "двести "; break;
+	case 3: cout << "триста "; break;
+	case 4: cout << "четыреста "; break;
+	case 5: cout << "пятсот "; break;
+	case 6: cout << "шестьсот "; break;
+	case 7: cout << "семьсот "; break;
+	case 8: cout << "восемьсот "; break;
+	case 9: cout << "девятьсот "; break;
+	}
+}
+
+void dozensOut(int dozens) {
+	switch (dozens) {
+	case 0: break;
+	case 2: cout << "двадцать "; break;
+	case 3: cout << "тридцать "; break;
+	case 4: cout << "чорок "; break;
+	case 5: cout << "пятьдесят "; break;
+	case 6: cout << "шестьдесят"; break;
+	case 7: cout << "семьдесят "; break;
+	case 8: cout << "восемьдесят "; break;
+	case 9: cout << "девяносто "; break;
+	}
+}
+
+void tensOut(int number) {
+	switch (number) {
+	case 0: cout << "десять" << endl; break;
+	case 1: cout << "одинадцать" << endl; break;
+	case 2: cout << "двенадцать" << endl; break;
+	case 3: cout << "тринадцать" << endl; break;
+	case 4: cout << "четырнадцать" << endl; break;
+	case 5: cout << "пятнадцать" << endl; break;
+	case 6: cout << "шестнадцать" << endl; break;
+	case 7: cout << "семнадцать" << endl; break;
+	case 8: cout << "восемнадцать" << endl; break;
+	case 9: cout << "девятнадцать" << endl; break;
+	}
+}
+
+void unitsOut(int units) {
+	switch (units) {
+	case 0: break;
+	case 1: cout << "один" << endl; break;
+	case 2: cout << "два" << endl; break;
+	case 3: cout << "три" << endl; break;
+	case 4: cout << "четыре" << endl; break;
+	case 5: cout << "пять" << endl; break;
+	case 6: cout << "шесть" << endl; break;
+	case 7: cout << "семь" << endl; break;
+	case 8: cout << "восемь" << endl; break;
+	case 9: cout << "девять" << endl; break;
+	}
+}
+
+void case19(int year) {
+	/*В восточном календаре принят 60-летний цикл, состоящий из 12- летних подциклов, 
+	обозначаемых названиями цвета: зеленый, красный, желтый, белый и черный. 
+	В каждом подцикле годы носят названия животных: крысы, коровы, тигра, зайца, дракона, 
+	змеи, лошади, овцы, обезьяны, курицы, собаки и свиньи. По номеру года определить 	его название, если 1984 год — начало цикла: «год зеленой крысы».*/
+	int cycle = (year - 1984) & 60;
+	cout << "год ";
+	switch (cycle / 12) {
+	case 0: cout << "зелён"; break;
+	case 1: cout << "красн"; break;
+	case 2: cout << "жёлт"; break;
+	case 3: cout << "бел"; break;
+	case 4: cout << "чёрн"; break;
+	}
+	switch (cycle % 12) {
+	case 0: cout << "ой крысы" << endl; break;
+	case 1: cout << "ой коровы" << endl; break;
+	case 2: cout << "го тигра" << endl; break;
+	case 3: cout << "го зайца" << endl; break;
+	case 4: cout << "го дракона" << endl; break;
+	case 5: cout << "ой змеи" << endl; break;
+	case 6: cout << "ой лошади" << endl; break;
+	case 7: cout << "ой овцы" << endl; break;
+	case 8: cout << "го обезьяны" << endl; break;
+	case 9: cout << "ой курицы" << endl; break;
+	case 10: cout << "ой собаки" << endl; break;
+	case 11: cout << "ой свиньи" << endl; break;
+	}
+}
+
+void case20(int d, int m) {
+	/*Даны два целых числа: D (день) и M (месяц), определяющие правильную дату. 
+	Вывести знак Зодиака, соответствующий этой дате: «Водолей» (20.1–18.2), 
+	«Рыбы» (19.2–20.3), «Овен» (21.3–19.4), «Телец» (20.4–20.5), «Близнецы» (21.5–21.6), 	«Рак» (22.6–22.7), «Лев» (23.7–22.8), «Дева» (23.8–22.9), «Весы» (23.9–22.10), 	«Скорпион» (23.10–22.11), «Стрелец» (23.11–21.12), «Козерог» (22.12–19.1).*/
+	switch (m) {
+	case 1: 
+		if (d < 20) cout << "Козерог" << endl;
+		else cout << "Водолей" << endl; 
+		break;
 	case 2:
+		if (d < 19) cout << "Водолей" << endl;
+		else cout << "Рыбы" << endl;
+		break;
 	case 3:
+		if (d < 21) cout << "Рыбы" << endl;
+		else cout << "Овен" << endl;
+		break;
 	case 4:
+		if (d < 20) cout << "Овен" << endl;
+		else cout << "Телец" << endl;
+		break;
 	case 5:
+		if (d < 21) cout << "Телец" << endl;
+		else cout << "Близнецы" << endl;
+		break;
+	case 6:
+		if (d < 22) cout << "Близнецы" << endl;
+		else cout << "Рак" << endl;
+		break;
+	case 7:
+		if (d < 23) cout << "Рак" << endl;
+		else cout << "Лев" << endl;
+		break;
+	case 8:
+		if (d < 23) cout << "Лев" << endl;
+		else cout << "Дева" << endl;
+		break;
+	case 9:
+		if (d < 23) cout << "Дева" << endl;
+		else cout << "Весы" << endl;
+		break;
+	case 10:
+		if (d < 23) cout << "Весы" << endl;
+		else cout << "Скорпион" << endl;
+		break;
+	case 11:
+		if (d < 23) cout << "Скорпион" << endl;
+		else cout << "Стрелец" << endl;
+		break;
+	case 12:
+		if (d < 22) cout << "Стрелец" << endl;
+		else cout << "Козерог" << endl;
+		break;
 	}
 }
