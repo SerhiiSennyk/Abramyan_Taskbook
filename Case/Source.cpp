@@ -98,11 +98,11 @@ void case6(int length, int prefix) {
 	единицах (вещественное число). Найти длину отрезка в метрах.*/
 	float result;
 	switch (prefix) {
-	case 1: result = length * 0.1;
-	case 2: result = length * 1000;
-	case 3: result = length;
-	case 4: result = length * 0.001;
-	case 5: result = length * 0.01;
+	case 1: result = length * 0.1; break;
+	case 2: result = length * 1000; break;
+	case 3: result = length; break;
+	case 4: result = length * 0.001; break;
+	case 5: result = length * 0.01; break;
 	default: return;
 	}
 	cout << result << " meters" << endl;
@@ -115,11 +115,11 @@ void case7(int mass, int prefix) {
 	(вещественное число). Найти массу тела в килограммах.*/
 	float result;
 	switch (prefix) {
-	case 1: result = mass;
-	case 2: result = mass * 0.000001;
-	case 3: result = mass * 0.001;
-	case 4: result = mass * 1000;
-	case 5: result = mass * 100;
+	case 1: result = mass; break;
+	case 2: result = mass * 0.000001; break;
+	case 3: result = mass * 0.001; break;
+	case 4: result = mass * 1000; break;
+	case 5: result = mass * 100; break;
 	default: return;
 	}
 }
@@ -217,6 +217,25 @@ void case10(char c, int n) {
 	cout << c << endl;
 }
 
+enum class sides: int{N, W, S, E};
+
+void case10_02(char c, int n) {
+	sides side;
+	switch(c){
+	case 'N': side = sides::N; break;
+	case 'W': side = sides::W; break;
+	case 'S': side = sides::S; break;
+	case 'E': side = sides::E; break;
+	}
+	side = (sides)(((int)side + n + 4) % 4);
+	switch (side) {
+	case sides::N: cout << "N" << endl; break;
+	case sides::W: cout << "W" << endl; break;
+	case sides::S: cout << "S" << endl; break;
+	case sides::E: cout << "E" << endl; break;
+	}
+}
+
 void case11(char c, int n1, int n2) {
 	/*Локатор ориентирован на одну из сторон света («С» — север, «З» —
 	запад, «Ю» — юг, «В» — восток) и может принимать три цифровые команды поворота: 
@@ -262,6 +281,23 @@ char EastSwitch(char n) {
 	else if (n == -1) return 'S';
 	else if (n == 2) return 'W';
 	return 'E';
+}
+
+void case11_02(char c, int n1, int n2) {
+	sides side;
+	switch (c) {
+	case 'N': side = sides::N; break;
+	case 'W': side = sides::W; break;
+	case 'S': side = sides::S; break;
+	case 'E': side = sides::E; break;
+	}
+	side = (sides)(((int)side + n1 + n2 + 4) % 4);
+	switch (side) {
+	case sides::N: cout << "N" << endl; break;
+	case sides::W: cout << "W" << endl; break;
+	case sides::S: cout << "S" << endl; break;
+	case sides::E: cout << "E" << endl; break;
+	}
 }
 
 void case12(int number, int value) {
